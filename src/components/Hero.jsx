@@ -423,7 +423,7 @@ const Hero = () => {
                 opacity: 0,
                 transition: { duration: 0.4 },
               }}
-              className="text-white/20 text-[150px] font-poppins font-extrabold absolute top-0 left-10 -z-1"
+              className="text-white/30 text-[100px] text-shadow  font-poppins font-extrabold absolute top-0 left-10 -z-1"
             >
               {activeData.modal}
             </motion.div>

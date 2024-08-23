@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../assets/Logo.png";
+import Logo from "../assets/logo.png";
 import { MdMenu } from "react-icons/md";
 import { motion } from "framer-motion";
 import { UpdateFollower } from "react-mouse-follower";

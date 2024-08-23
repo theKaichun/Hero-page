@@ -1,15 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import Logo from "../assets/Logo.png";
-import { MdMenu } from "react-icons/md";
+
 import { motion } from "framer-motion";
 import { UpdateFollower } from "react-mouse-follower";
 import { Link } from "react-router-dom";
-
+import { FaBars, FaTimes } from "react-icons/fa";
 const NavbarMenu = [
   {
     id: 1,
     title: "雄英高校1年A班",
-    link: "http://localhost:5173/",
+    link: "/#",
   },
   {
     id: 2,
@@ -30,6 +30,11 @@ const NavbarMenu = [
 ];
 
 const Navbar = () => {
+  const [isMobileMenuOpen, setIsMobileOpen] = useState(false);
+
+  const handleMenuToggle = () => {
+    setIsMobileOpen(!isMobileMenuOpen);
+  };
   return (
     <div className=" text-white py-8">
       <motion.div
@@ -43,8 +48,12 @@ const Navbar = () => {
           <img src={Logo} alt="" className="max-w-[300px]" />
         </div>
         {/* Menu section */}
-        <div className="hidden md:block">
-          <ul className="flex items-center gap-4 relative z-40">
+        <div className="flex items-center gap-4">
+          <ul
+            className={`${
+              isMobileMenuOpen ? "block" : "hidden"
+            } sm:flex flex-col sm:flex-row items-center gap-4 absolute sm:static top-16 left-0 w-full sm:w-auto bg-gradient-to-r from-secondary to-secondary/90 sm:bg-none p-4 sm:p-0 z-50`}
+          >
             {NavbarMenu.map((item) => (
               <li key={item.id}>
                 <UpdateFollower
@@ -59,6 +68,7 @@ const Navbar = () => {
                   <Link
                     to={item.link}
                     className="inline-block text-base font-semibold py-2 px-3 uppercase"
+                    onClick={handleMenuToggle}
                   >
                     {item.title}
                   </Link>
@@ -78,9 +88,9 @@ const Navbar = () => {
           </ul>
         </div>
         {/* Hamburger Icon */}
-        <div className="md:hidden">
-          <MdMenu className="text-4xl" />
-        </div>
+        <button className="sm:hidden text-2xl" onClick={handleMenuToggle}>
+          {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
+        </button>
       </motion.div>
     </div>
   );

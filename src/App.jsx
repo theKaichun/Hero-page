@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import BPage from "./b/page";
 import TPage from "./T/page";
 import VPage from "./V/page";
+
 const App = () => {
   return (
     <main className="overflow-x-hidden">

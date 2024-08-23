@@ -17,7 +17,7 @@ const App = () => {
           }}
         >
           <Routes>
-            <Route path="/" element={<Hero />} />
+            <Route path="/components/Hero" element={<Hero />} />
             <Route path="/b/page" element={<BPage />} />
             <Route path="/T/page" element={<TPage />} />
             <Route path="/V/page" element={<VPage />} />

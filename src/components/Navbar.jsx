@@ -9,7 +9,7 @@ const NavbarMenu = [
   {
     id: 1,
     title: "雄英高校1年A班",
-    link: "http://localhost:5173/",
+    link: "/components/Hero",
   },
   {
     id: 2,

@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { UpdateFollower } from "react-mouse-follower";
 import { Link } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
+
 const NavbarMenu = [
   {
     id: 1,
@@ -21,7 +22,6 @@ const NavbarMenu = [
     title: "雄英高校教師",
     link: "/T/page",
   },
-
   {
     id: 4,
     title: "敵聯合",
@@ -34,28 +34,34 @@ const Navbar = () => {
 
   const handleMenuToggle = () => {
     setIsMobileOpen(!isMobileMenuOpen);
+    // 鎖定背景滾動
+    document.body.style.overflow = isMobileMenuOpen ? "auto" : "hidden";
   };
+
   return (
-    <div className=" text-white py-8">
+    <div className="text-white py-8">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 0.5 }}
-        className="container flex justify-between items-center"
+        className="container flex justify-between items-center mx-auto"
       >
-        {/* logo section */}
+        {/* Logo section */}
         <div>
-          <img src={Logo} alt="" className="max-w-[300px]" />
+          <img src={Logo} alt="" className="max-w-[200px] sm:max-w-[300px]" />
         </div>
+
         {/* Menu section */}
         <div className="flex items-center gap-4">
           <ul
             className={`${
-              isMobileMenuOpen ? "block" : "hidden"
-            } sm:flex flex-col sm:flex-row items-center gap-4 absolute sm:static top-16 left-0 w-full sm:w-auto bg-gradient-to-r from-secondary to-secondary/90 sm:bg-none p-4 sm:p-0 z-50`}
+              isMobileMenuOpen
+                ? "fixed inset-0 bg-black/70 z-50 flex flex-col items-center justify-center"
+                : "hidden"
+            } sm:flex sm:flex-row sm:static sm:bg-none sm:p-0 gap-4 sm:gap-6 p-4`}
           >
             {NavbarMenu.map((item) => (
-              <li key={item.id}>
+              <li key={item.id} className="text-center sm:text-left">
                 <UpdateFollower
                   mouseOptions={{
                     backgroundColor: "white",
@@ -67,7 +73,7 @@ const Navbar = () => {
                 >
                   <Link
                     to={item.link}
-                    className="inline-block text-base font-semibold py-2 px-3 uppercase"
+                    className="inline-block text-xl sm:text-base font-semibold py-2 px-3 uppercase text-white"
                     onClick={handleMenuToggle}
                   >
                     {item.title}
@@ -75,20 +81,11 @@ const Navbar = () => {
                 </UpdateFollower>
               </li>
             ))}
-
-            <UpdateFollower
-              mouseOptions={{
-                backgroundColor: "white",
-                zIndex: 9999,
-                followSpeed: 1.5,
-                scale: 5,
-                mixBlendMode: "difference",
-              }}
-            ></UpdateFollower>
           </ul>
         </div>
+
         {/* Hamburger Icon */}
-        <button className="sm:hidden text-2xl" onClick={handleMenuToggle}>
+        <button className="sm:hidden text-3xl z-50" onClick={handleMenuToggle}>
           {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
         </button>
       </motion.div>

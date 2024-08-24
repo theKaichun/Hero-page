@@ -15,7 +15,7 @@ const NavbarMenu = [
   {
     id: 2,
     title: "雄英高校1年B班",
-    link: "/b/page",
+    link: "/B/page",
   },
   {
     id: 3,
@@ -34,7 +34,7 @@ const Navbar = () => {
 
   const handleMenuToggle = () => {
     setIsMobileOpen(!isMobileMenuOpen);
-    // 鎖定背景滾動
+
     document.body.style.overflow = isMobileMenuOpen ? "auto" : "hidden";
   };
 
